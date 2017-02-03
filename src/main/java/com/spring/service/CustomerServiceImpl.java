@@ -15,17 +15,19 @@ public class CustomerServiceImpl implements CustomerService {
 	//@Autowired 
 	private CustomerRepository customerRepository;
 	
-	/* Autowired setter Injection */
 	@Autowired
+	public CustomerServiceImpl(CustomerRepository customerRepository) {
+		System.out.println("We are using constructor Injection");
+		this.customerRepository = customerRepository;
+	}
+	
+	/* Autowired setter Injection */
+	//@Autowired
 	public void setCustomerRepository(CustomerRepository customerRepository) {
 		System.out.println("using setter Injection");
 		this.customerRepository = customerRepository;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see com.spring.service.CustomerService#findAll()
-	 */
 	@Override
 	public List<Customer> findAll(){
 		return customerRepository.findAll();
